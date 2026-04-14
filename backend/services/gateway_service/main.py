@@ -12,6 +12,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "api-gateway"}
+
 SERVICES = {
     "orders": "http://localhost:8001",
     "returns": "http://localhost:8002",
